@@ -1,0 +1,85 @@
+1. 
+A. CREATE TABLE Books (
+  BookID INT PRIMARY KEY,
+  Title VARCHAR (100),
+  Author VARCHAR (50),
+  PublishedYear INT
+);
+------------------------
+B. ALTER TABLE Books
+   ADD ISBN VARCHAR (13)
+------------------------
+C. ALTER TABLE Books
+   DROP COLUMN PublishedYear
+-------------------------
+
+-----------------------------------------------------------------
+2. CREATE TABLE Students (
+	StudentID INT PRIMARY KEY,
+	NAme VARCHAR (50),
+	Age INT,
+	Grade CHAR (2)
+);
+
+   INSERT INTO Students (StudentID, Name, Age, Grade) 
+	VALUES
+	(101, 'John Smith', 15, 'A'),
+	(102, 'Jane Doe', 16, 'B'),
+	(103, 'Alice Lee', 14, 'A');
+--------------------------
+A. SELECT Name 
+   FROM Students 
+   WHERE Age > 15;
+--------------------------
+B. INSERT INTO Students (StudentID, Name, Age, Grade)
+   VALUES (104, 'Tom Brown', 15, 'C');
+--------------------------
+C. UPDATE Students 
+   SET Grade = 'A+' 
+   WHERE Name = 'Jane Doe';
+--------------------------
+D. DELETE FROM Students 
+   WHERE Grade = 'C';
+------------------------------------------------------------------
+3.
+A.GRANT SELECT, INSERT 
+  ON Books 
+  TO User2;
+--------------------------
+B.REVOKE INSERT 
+  ON Books 
+  FROM User2;
+-------------------------------------------------------------------
+4.
+A. BEGIN TRANSACTION;
+--------------------------
+B. INSERT INTO Orders (order_id, item, amount) 
+   VALUES (6, 'CPU', 25000);
+--------------------------
+C. UPDATE Shippings
+   SET customer = customer - 1
+   WHERE shipping_id = 4;
+--------------------------
+D. ROLLBACK;
+   COMMIT;
+--------------------------------------------------------------------
+5.
+A. CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Email VARCHAR(50),
+    Phone VARCHAR(15)
+);
+---------------------------
+B. INSERT INTO Customers (customer_id, first_name, last_name, age, country)
+   VALUES(6, 'Dr.', 'Doom', 56, 'India');
+---------------------------
+C. GRANT SELECT
+   ON Customers
+   TO AdminUser;
+---------------------------
+D. BEGIN TRANSACTION;
+   INSERT INTO Customers (customer_id, first_name, last_name, age, country)
+   VALUES(7, 'Iron', 'Man', '42', 'Honduras');
+   ROLLBACK;
+-------------------------------------------------------------------------
